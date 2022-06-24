@@ -14,6 +14,7 @@ public class RecordTime
         this.hour = hour;
         this.minute = minute;
         this.month = month;
+
     }
 
     @Override
