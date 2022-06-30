@@ -17,6 +17,9 @@
             android:name=".showActivity"
             android:exported="false" />
         <activity
+            android:name=".recycleview"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
