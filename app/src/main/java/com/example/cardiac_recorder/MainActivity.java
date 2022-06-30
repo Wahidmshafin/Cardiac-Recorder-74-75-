@@ -2,11 +2,15 @@ package com.example.cardiac_recorder;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,14 +33,30 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ArrayList<RecordTime> timeList=new ArrayList<>();
-        record_listView=findViewById(R.id.ma_record_listView);
-        timeList.add(new RecordTime(18,6,2022,14,34));
-        timeList.add(new RecordTime(22,6,2022,16,24));
-        timeList.add(new RecordTime(20,6,2022,19,54));
-        ArrayAdapter<RecordTime> arrayAdapter=new CustomList(this,timeList);
-        record_listView.setAdapter(arrayAdapter);
-        Log.e(TAG, "onCreate: "+timeList.get(1) );
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.addbutton_view,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
+        {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem)
+            {
+                Intent intent=new Intent(MainActivity.this, showActivity.class);
+                intent.putExtra("Add",true);
+                startActivity(intent);
+                return true;
+            }
+        });
+        return true;
     }
 }
