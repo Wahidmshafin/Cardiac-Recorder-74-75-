@@ -1,16 +1,17 @@
 package com.example.cardiac_recorder;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 
-public class Measurement {
-    private Date date;
-    private Time time;
+public class Measurement implements Serializable {
+    private String date;
+    private String time;
     private int systolicPressure;
     private int diastolicPressure;
     private int heartrate;
     private String comment;
-    public Measurement(Date date, Time time, int systolicPressure, int diastolicPressure, int heartrate, String comment) {
+    public Measurement(String date, String time, int systolicPressure, int diastolicPressure, int heartrate, String comment) {
         this.date = date;
         this.time = time;
         this.systolicPressure = systolicPressure;
@@ -19,11 +20,11 @@ public class Measurement {
         this.comment = comment;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -43,11 +44,11 @@ public class Measurement {
         this.comment = comment;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
