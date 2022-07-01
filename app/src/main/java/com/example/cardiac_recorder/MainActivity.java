@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.addbutton_view,menu);
+        //inflater.inflate(R.menu.addbutton_view,menu);
         return true;
     }
 
