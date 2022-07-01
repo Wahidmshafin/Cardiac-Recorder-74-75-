@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class showActivity extends AppCompatActivity {
+import java.util.Date;
+
+public class showActivity extends AppCompatActivity
+{
 
     EditText ea_time,ea_date, ea_systolic, ea_diastolic, ea_rate, ea_comment;
     Button btn_add;
@@ -29,7 +32,7 @@ public class showActivity extends AppCompatActivity {
     {
         init();
         Intent intent=getIntent();
-        boolean add= ((Intent) intent).getBooleanExtra("add",false);
+        boolean add=intent.getBooleanExtra("add",false);
         if(add==true)
         {
             btn_add.setText("ADD");
@@ -51,5 +54,4 @@ public class showActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show);
     }
-
 }

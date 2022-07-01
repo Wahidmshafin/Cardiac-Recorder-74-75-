@@ -10,7 +10,7 @@
         android:id="@+id/ma_txt_heading"
         android:layout_width="325dp"
         android:layout_height="53dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:text="Measurement History"
         android:textAlignment="center"
         android:textColor="#F50057"
@@ -22,9 +22,10 @@
 
     <ListView
         android:id="@+id/ma_record_listView"
-        android:layout_width="399dp"
-        android:layout_height="520dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="388dp"
+        android:layout_height="554dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ma_txt_heading" />
