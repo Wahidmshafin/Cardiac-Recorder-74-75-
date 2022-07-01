@@ -1,10 +1,13 @@
 package com.example.cardiac_recorder;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,15 +28,18 @@ public class showActivity extends AppCompatActivity
         ea_diastolic=findViewById(R.id.sa_et_diatolic);
         ea_rate=findViewById(R.id.sa_et_rate);
         ea_comment=findViewById(R.id.sa_et_comment);
+        btn_add=findViewById(R.id.sa_btn);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_show);
         init();
         Intent intent=getIntent();
         boolean add=intent.getBooleanExtra("add",false);
-        if(add==true)
+        if(add)
         {
             btn_add.setText("ADD");
             btn_add.setOnClickListener(new View.OnClickListener()
@@ -41,17 +47,20 @@ public class showActivity extends AppCompatActivity
                 @Override
                 public void onClick(View view)
                 {
-                    Measurement measurement=new Measurement(ea_date.getText().toString(),ea_time.getText().toString(),
-                            Integer.getInteger(ea_systolic.getText().toString()),Integer.getInteger(ea_diastolic.getText().toString())
-                            ,Integer.getInteger(ea_rate.getText().toString()),ea_systolic.getText().toString());
+//                    Log.e(TAG, "onClick: "+ ea_systolic.getText().toString()+ea_diastolic.getText().toString()
+//                            +ea_rate.getText().toString()+ea_comment.getText().toString());
+//            Measurement measurement=new Measurement();
 
-                    Intent backIntent=new Intent();
-                    backIntent.putExtra("info",measurement);
-                    setResult(Activity.RESULT_OK,backIntent);
+                    Measurement measurement=new Measurement(ea_date.getText().toString(),ea_time.getText().toString(),
+                            Integer.parseInt(ea_systolic.getText().toString()),Integer.parseInt(ea_diastolic.getText().toString())
+                            ,Integer.parseInt(ea_rate.getText().toString()),ea_comment.getText().toString());
+
+                    intent.putExtra("info",measurement);
+                    setResult(Activity.RESULT_OK,intent);
+                    finish();
                 }
             });
         }
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show);
+
     }
 }

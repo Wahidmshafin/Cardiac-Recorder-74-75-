@@ -136,26 +136,26 @@
 
     <EditText
         android:id="@+id/sa_et_comment"
-        android:layout_width="410dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="184dp"
+        android:layout_width="405dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="188dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/sa_btn"
-        android:layout_width="116dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="56dp"
-        android:text="Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="84dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sa_et_comment" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 package com.example.cardiac_recorder;
 
+import android.os.Parcelable;
+
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
