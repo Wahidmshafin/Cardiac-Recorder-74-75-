@@ -24,7 +24,6 @@ public class Measurement implements Serializable
     {
 
     }
-
     public void setDate(String date) {
         this.date = date;
     }
