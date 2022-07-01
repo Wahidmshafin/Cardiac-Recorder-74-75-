@@ -2,10 +2,15 @@ package com.example.cardiac_recorder;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,11 +33,13 @@ public class MainActivity extends AppCompatActivity
 {
     TextView txt_test;
     ListView record_listView;
+    ActivityResultLauncher<Intent>getContent;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     @Override
@@ -51,10 +58,10 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean onMenuItemClick(MenuItem menuItem)
             {
-                Intent intent=new Intent(MainActivity.this, showActivity.class);
-                intent.putExtra("Add",true);
-                startActivity(intent);
-                return true;
+//                Intent intent=new Intent(MainActivity.this, showActivity.class);
+//                intent.putExtra("Add",true);
+//                startActivity(intent);
+//                return true;
             }
         });
         return true;
