@@ -47,10 +47,6 @@ public class showActivity extends AppCompatActivity
                 @Override
                 public void onClick(View view)
                 {
-//                    Log.e(TAG, "onClick: "+ ea_systolic.getText().toString()+ea_diastolic.getText().toString()
-//                            +ea_rate.getText().toString()+ea_comment.getText().toString());
-//            Measurement measurement=new Measurement();
-
                     Measurement measurement=new Measurement(ea_date.getText().toString(),ea_time.getText().toString(),
                             Integer.parseInt(ea_systolic.getText().toString()),Integer.parseInt(ea_diastolic.getText().toString())
                             ,Integer.parseInt(ea_rate.getText().toString()),ea_comment.getText().toString());
