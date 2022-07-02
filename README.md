@@ -3,7 +3,7 @@ Git Project: Cardiac-Recorder.
 .
 .
 .
-#Cardiac-Recorder
+# Cardiac-Recorder
 This app which is named "Cardiac-Recorder" will provide the user to monitor his blood pressure and heart rate.  
 
 Each measurement have the following field:  
