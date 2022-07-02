@@ -9,6 +9,8 @@ import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     TextView txt_test;
     ListView record_listView;
     Measurement measurement=new Measurement();
+    private RecyclerView contactsrecview;
     ActivityResultLauncher<Intent>getcontent=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>()
     {
         @Override
@@ -62,7 +65,22 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        contactsrecview = findViewById(R.id.contactsrecview);
 
+        ArrayList<Measurement> measurement = new ArrayList<>();
+        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
+        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
+        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
+        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
+        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
+        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
+        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
+        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
+        ContactsRecVIewAdapter adapter = new ContactsRecVIewAdapter(this);
+        adapter.setMeasurement(measurement);
+
+        contactsrecview.setAdapter(adapter);
+        contactsrecview.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
@@ -70,7 +88,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         MenuInflater inflater=getMenuInflater();
-        //inflater.inflate(R.menu.addbutton_view,menu);
+        inflater.inflate(R.menu.addbutton_view,menu);
         return true;
     }
 
