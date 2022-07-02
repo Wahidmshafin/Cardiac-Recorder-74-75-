@@ -26,16 +26,17 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.contacts_list_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
-        return null;
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtName.setText(measurement.get(position).getDate());
+        holder.time.setText(measurement.get(position).getTime());
+        holder.date.setText(measurement.get(position).getDate());
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"selected", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -52,12 +53,14 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtName;
+        private TextView time;
+        private TextView date;
         private RelativeLayout parent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtName = itemView.findViewById(R.id.txtName);
+            time = itemView.findViewById(R.id.time);
+            date = itemView.findViewById(R.id.date);
             parent = itemView.findViewById(R.id.parent);
         }
     }
