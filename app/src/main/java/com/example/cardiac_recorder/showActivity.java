@@ -14,6 +14,7 @@ public class showActivity extends AppCompatActivity
     EditText ea_time,ea_date, ea_systolic, ea_diastolic, ea_rate, ea_comment;
     Button btn_add;
 
+
     public void init()
     {
         ea_time=findViewById(R.id.sa_time);
@@ -50,6 +51,12 @@ public class showActivity extends AppCompatActivity
                     finish();
                 }
             });
+        }
+        else
+
+        {
+            btn_add.setText("Update");
+
         }
 
     }
