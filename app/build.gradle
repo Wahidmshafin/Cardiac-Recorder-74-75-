@@ -1,11 +1,7 @@
-plugins {
-    id 'com.android.application'
-
-}
-
+apply plugin: 'com.android.application'
 android {
-    compileSdk 32
-
+    compileSdk 31
+    buildToolsVersion '32.0.0'
     defaultConfig {
         applicationId "com.example.cardiac_recorder"
         minSdk 30
@@ -26,7 +22,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '32.0.0'
+
 }
 
 dependencies {
@@ -43,3 +39,4 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
     implementation 'com.google.android.material:material:1.6.1'
 }
+apply plugin: 'com.google.gms.google-services'

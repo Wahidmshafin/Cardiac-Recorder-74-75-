@@ -27,6 +27,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -67,21 +74,42 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         contactsrecview = findViewById(R.id.contactsrecview);
-
-
-        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
-        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
-        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
-        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
-        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
-        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
-        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
-        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
-
         adapter.setMeasurement(measurement);
 
         contactsrecview.setAdapter(adapter);
         contactsrecview.setLayoutManager(new LinearLayoutManager(this));
+        FirebaseApp.initializeApp(this);
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("measurement");
+
+        reference.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                for(DataSnapshot dataSnapshot:snapshot.getChildren())
+                {
+                    measurement.add((Measurement) dataSnapshot.getValue());
+                    adapter.notifyItemInserted(measurement.size()-1);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+
+            }
+        });
+
+        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
+        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
+        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
+        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
+        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
+        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
+        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
+        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
+
 
     }
 
