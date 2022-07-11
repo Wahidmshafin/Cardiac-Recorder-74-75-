@@ -31,8 +31,7 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
 
     ActivityResultLauncher<Intent>content;
 
-    public ContactsRecVIewAdapter(Context context, ActivityResultLauncher<Intent> content) {
-        this.content=content;
+    public ContactsRecVIewAdapter(Context context) {
         this.context = context;
     }
 
@@ -75,6 +74,7 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
                             public void onClick(DialogInterface dialogInterface, int i)
                             {
                                 measurement.remove(holder.getAbsoluteAdapterPosition());
+                                //delete here;
                                 notifyItemInserted(measurement.size());
                                 notifyDataSetChanged();
                             }

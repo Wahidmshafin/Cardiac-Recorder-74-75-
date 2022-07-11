@@ -98,6 +98,7 @@ public class showActivity extends AppCompatActivity
     {
         super.onDestroy();
         Measurement measurement=new Measurement(ea_date.getText().toString(),ea_time.getText().toString(),
+                //update here
                 Integer.parseInt(ea_systolic.getText().toString()),Integer.parseInt(ea_diastolic.getText().toString())
                 ,Integer.parseInt(ea_rate.getText().toString()),ea_comment.getText().toString());
         Log.e(TAG, "onDestroy: Pressed");
