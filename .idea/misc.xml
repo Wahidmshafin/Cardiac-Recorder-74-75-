@@ -3,16 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_recycleview.xml" value="0.25" />
+        <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_show.xml" value="0.25" />
+        <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/contacts_list_item.xml" value="0.25" />
         <entry key="..\:/CardiacRecorder/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/CardiacRecorder/app/src/main/res/layout/record_list_view.xml" value="0.25" />
         <entry key="..\:/Users/Mahadi Ankon/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Mahadi Ankon/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_recycleview.xml" value="0.1" />
         <entry key="..\:/Users/Mahadi Ankon/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_show.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Mahadi Ankon/Cardiac-Recorder-74-75-/app/src/main/res/layout/contacts_list_item.xml" value="0.2" />
+        <entry key="..\:/Users/Mahadi Ankon/Cardiac-Recorder-74-75-/app/src/main/res/layout/contacts_list_item.xml" value="0.264" />
         <entry key="..\:/Users/Mahadi Ankon/Cardiac-Recorder-74-75-/app/src/main/res/layout/record_list_view.xml" value="0.25416666666666665" />
+<<<<<<< HEAD
         <entry key="..\:/Users/Mahadi Ankon/Cardiac-Recorder-74-75-/app/src/main/res/layout/splashscreen.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mahadi Ankon/Desktop/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Mahadi Ankon/Desktop/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_show.xml" value="0.1" />
+=======
+        <entry key="..\:/Users/Mahadi Ankon/Desktop/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_main.xml" value="0.17346014492753623" />
+>>>>>>> 4ecb8cdff51d3dd24132ed80cdca90e8fc4fa5d5
         <entry key="..\:/Users/Mahadi Ankon/Desktop/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_view_listview.xml" value="0.25" />
         <entry key="..\:/Users/Mahadi Ankon/Desktop/Cardiac-Recorder-74-75-/app/src/main/res/layout/contacts_list_item.xml" value="0.1" />
         <entry key="..\:/Users/Mahadi Ankon/Desktop/Cardiac-Recorder-74-75-/app/src/main/res/layout/record_list_view.xml" value="0.25416666666666665" />

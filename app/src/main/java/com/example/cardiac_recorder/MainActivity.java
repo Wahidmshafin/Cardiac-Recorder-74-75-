@@ -66,7 +66,28 @@ public class MainActivity extends AppCompatActivity
     });
 
 
+
     ContactsRecVIewAdapter adapter = new ContactsRecVIewAdapter(this,getcontent);
+
+    ActivityResultLauncher<Intent>updatecontent=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>()
+    {
+        @Override
+        public void onActivityResult(ActivityResult result)
+        {
+            if(result.getData()!=null && result.getResultCode()== Activity.RESULT_OK)
+            {
+
+                Measurement ms=(Measurement) result.getData().getSerializableExtra("info");
+                int position=result.getData().getIntExtra("position",0);
+                Log.e(TAG, "onActivityResult: Position "+position );
+                measurement.set(position,ms);
+                adapter.notifyItemInserted(measurement.size()-1);
+                adapter.notifyDataSetChanged();
+            }
+        }
+    });
+
+ //   ContactsRecVIewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -74,6 +95,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         contactsrecview = findViewById(R.id.contactsrecview);
+        adapter= new ContactsRecVIewAdapter(this,updatecontent);
         adapter.setMeasurement(measurement);
 
         contactsrecview.setAdapter(adapter);
@@ -110,7 +132,28 @@ public class MainActivity extends AppCompatActivity
         measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
         measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
 
-
+//        FirebaseApp.initializeApp(this);
+//        DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("measurement");
+//
+//        reference.addValueEventListener(new ValueEventListener()
+//        {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot)
+//            {
+//                for(DataSnapshot dataSnapshot:snapshot.getChildren())
+//                {
+//                    measurement.add((Measurement) dataSnapshot.getValue());
+//                    adapter.notifyItemInserted(measurement.size()-1);
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error)
+//            {
+//
+//            }
+//        });
     }
 
     @Override
