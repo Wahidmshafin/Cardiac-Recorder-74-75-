@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.ActivityResultRegistry;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,10 +31,11 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
     private Context context;
     String TAG="Error";
 
-    ActivityResultLauncher<Intent>content;
+    ActivityResultRegistry registry;
+    ActivityResultLauncher<Intent> content;
 
-    public ContactsRecVIewAdapter(Context context, ActivityResultLauncher<Intent> content) {
-        this.content=content;
+    public ContactsRecVIewAdapter(Context context, ActivityResultRegistry registry) {
+        this.registry=registry;
         this.context = context;
     }
 
@@ -41,6 +44,7 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.contacts_list_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
+
         return holder;
     }
 
@@ -48,16 +52,19 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.time.setText(measurement.get(position).getTime());
         holder.date.setText(measurement.get(position).getDate());
+
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent=new Intent(holder.parent.getContext(), showActivity.class);
                 intent.putExtra("add", false);
                 intent.putExtra("position", holder.getAbsoluteAdapterPosition());
 
                 intent.putExtra("info",measurement.get(holder.getAbsoluteAdapterPosition()));
-                content.launch(intent);
-                Log.e(TAG, "onClick: Miss korse");
+
+                holder.parent.getContext().startActivity(intent);
+
                 Toast.makeText(context,"selected", Toast.LENGTH_SHORT).show();
             }
         });
@@ -90,6 +97,7 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
                 return true;
             }
         });
+        Log.e(TAG, "onClick: Miss korse");
     }
 
     @Override

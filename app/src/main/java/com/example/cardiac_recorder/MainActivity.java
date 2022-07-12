@@ -65,25 +65,6 @@ public class MainActivity extends AppCompatActivity
         }
     });
 
-
-    ActivityResultLauncher<Intent>updatecontent=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>()
-    {
-        @Override
-        public void onActivityResult(ActivityResult result)
-        {
-            if(result.getData()!=null && result.getResultCode()== Activity.RESULT_OK)
-            {
-
-                Measurement ms=(Measurement) result.getData().getSerializableExtra("info");
-                int position=result.getData().getIntExtra("position",0);
-                Log.e(TAG, "onActivityResult: Position "+position );
-                measurement.set(position,ms);
-                adapter.notifyItemInserted(measurement.size()-1);
-                adapter.notifyDataSetChanged();
-            }
-        }
-    });
-
     ContactsRecVIewAdapter adapter;
 
     @Override
@@ -100,7 +81,7 @@ public class MainActivity extends AppCompatActivity
         measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
         measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
         measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
-        adapter= new ContactsRecVIewAdapter(this,updatecontent);
+        adapter= new ContactsRecVIewAdapter(this,this.getActivityResultRegistry());
         adapter.setMeasurement(measurement);
 
         contactsrecview.setAdapter(adapter);
@@ -146,5 +127,12 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra("add",true);
         getcontent.launch(intent);
         return true;
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        finishAffinity();
     }
 }
