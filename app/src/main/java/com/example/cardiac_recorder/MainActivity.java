@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.icu.util.Measure;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -37,7 +45,8 @@ public class MainActivity extends AppCompatActivity
 {
     TextView txt_test;
     ListView record_listView;
-    Measurement measurement=new Measurement();
+    ArrayList<Measurement> measurement = new ArrayList<>();
+
     private RecyclerView contactsrecview;
     ActivityResultLauncher<Intent>getcontent=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>()
     {
@@ -46,19 +55,39 @@ public class MainActivity extends AppCompatActivity
         {
             if(result.getData()!=null && result.getResultCode()== Activity.RESULT_OK)
             {
-                Log.e(TAG, "onActivityResult: Yes");
 
-                measurement=(Measurement) result.getData().getSerializableExtra("info");
+                Measurement ms=(Measurement) result.getData().getSerializableExtra("info");
 
-                if(measurement==null)
-                {
-                    Log.e(TAG, "onActivityResult: Its Null");
-
-                }
-                Log.e(TAG, "onActivityResult: " + measurement.getTime());
+                measurement.add(ms);
+                adapter.notifyItemInserted(measurement.size()-1);
+                adapter.notifyDataSetChanged();
             }
         }
     });
+
+
+
+    ContactsRecVIewAdapter adapter = new ContactsRecVIewAdapter(this,getcontent);
+
+    ActivityResultLauncher<Intent>updatecontent=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>()
+    {
+        @Override
+        public void onActivityResult(ActivityResult result)
+        {
+            if(result.getData()!=null && result.getResultCode()== Activity.RESULT_OK)
+            {
+
+                Measurement ms=(Measurement) result.getData().getSerializableExtra("info");
+                int position=result.getData().getIntExtra("position",0);
+                Log.e(TAG, "onActivityResult: Position "+position );
+                measurement.set(position,ms);
+                adapter.notifyItemInserted(measurement.size()-1);
+                adapter.notifyDataSetChanged();
+            }
+        }
+    });
+
+ //   ContactsRecVIewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -66,22 +95,65 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         contactsrecview = findViewById(R.id.contactsrecview);
-
-        ArrayList<Measurement> measurement = new ArrayList<>();
-        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
-        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
-        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
-        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
-        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
-        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
-        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
-        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
-        ContactsRecVIewAdapter adapter = new ContactsRecVIewAdapter(this);
+        adapter= new ContactsRecVIewAdapter(this,updatecontent);
         adapter.setMeasurement(measurement);
 
         contactsrecview.setAdapter(adapter);
         contactsrecview.setLayoutManager(new LinearLayoutManager(this));
+        FirebaseApp.initializeApp(this);
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("measurement");
 
+        reference.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                for(DataSnapshot dataSnapshot:snapshot.getChildren())
+                {
+                    measurement.add((Measurement) dataSnapshot.getValue());
+                    adapter.notifyItemInserted(measurement.size()-1);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+
+            }
+        });
+
+        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
+        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
+        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
+        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
+        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
+        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
+        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
+        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
+
+//        FirebaseApp.initializeApp(this);
+//        DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("measurement");
+//
+//        reference.addValueEventListener(new ValueEventListener()
+//        {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot)
+//            {
+//                for(DataSnapshot dataSnapshot:snapshot.getChildren())
+//                {
+//                    measurement.add((Measurement) dataSnapshot.getValue());
+//                    adapter.notifyItemInserted(measurement.size()-1);
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error)
+//            {
+//
+//            }
+//        });
     }
 
     @Override
