@@ -15,7 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -32,8 +31,7 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
 
     ActivityResultLauncher<Intent>content;
 
-    public ContactsRecVIewAdapter(Context context, ActivityResultLauncher<Intent> content) {
-        this.content=content;
+    public ContactsRecVIewAdapter(Context context) {
         this.context = context;
     }
 
@@ -52,7 +50,6 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent=new Intent(holder.parent.getContext(), showActivity.class);
                 intent.putExtra("add", false);
                 intent.putExtra("position", holder.getAbsoluteAdapterPosition());
@@ -77,6 +74,7 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
                             public void onClick(DialogInterface dialogInterface, int i)
                             {
                                 measurement.remove(holder.getAbsoluteAdapterPosition());
+                                //delete here;
                                 notifyItemInserted(measurement.size());
                                 notifyDataSetChanged();
                             }
