@@ -102,9 +102,10 @@ public class showActivity extends AppCompatActivity
                 Integer.parseInt(ea_systolic.getText().toString()),Integer.parseInt(ea_diastolic.getText().toString())
                 ,Integer.parseInt(ea_rate.getText().toString()),ea_comment.getText().toString());
         Log.e(TAG, "onDestroy: Pressed");
-        intent.putExtra("info",measurement);
-        intent.putExtra("position",position);
-        setResult(Activity.RESULT_OK,intent);
+        Intent backintent=new Intent(showActivity.this,MainActivity.class);
+        backintent.putExtra("info",measurement);
+        backintent.putExtra("position",position);
+        startActivity(backintent);
         finish();
     }
 
