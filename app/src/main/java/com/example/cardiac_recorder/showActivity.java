@@ -15,6 +15,9 @@ public class showActivity extends AppCompatActivity
 {
 
     EditText ea_time,ea_date, ea_systolic, ea_diastolic, ea_rate, ea_comment;
+    //Button btn_add;
+
+
     Button btn_add,btn_editable;
     Intent intent;
     int position;
@@ -62,6 +65,7 @@ public class showActivity extends AppCompatActivity
         else
 
         {
+            btn_add.setText("Update");
             btn_editable.setVisibility(View.VISIBLE);
             btn_add.setText("Edit");
             Measurement measurement=(Measurement) intent.getSerializableExtra("info");
