@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 public class showActivity extends AppCompatActivity
 {
 
+
+
     EditText ea_time,ea_date, ea_systolic, ea_diastolic, ea_rate, ea_comment;
     //Button btn_add;
 

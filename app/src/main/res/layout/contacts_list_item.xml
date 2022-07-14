@@ -3,41 +3,87 @@
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
-
+    android:padding="40dp">
 
     <TextView
         android:id="@+id/time"
-        android:layout_width="185dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Time"
+        android:layout_width="163dp"
+        android:layout_height="44dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="Time"
         android:textAlignment="center"
         android:textColor="@color/design_default_color_primary_dark"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textSize="20dp"></TextView>
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="185dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="7dp"
-        android:text="Date"
+        android:layout_width="149dp"
+        android:layout_height="45dp"
+        android:layout_alignEnd="@+id/time"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="-154dp"
+        android:layout_marginRight="16dp"
+        android:hint="Date"
         android:textAlignment="center"
         android:textColor="@color/design_default_color_primary_dark"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textSize="20dp"></TextView>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/tv1"
+        android:layout_width="148dp"
+        android:layout_height="54dp"
+        android:layout_below="@+id/time"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="16dp"
+        android:text="Systolic Pressure:"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="20dp"></TextView>
 
-        />
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="148dp"
+        android:layout_height="54dp"
+        android:layout_below="@+id/tv1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Diastolic Pressure:"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="20dp"></TextView>
+
+    <TextView
+        android:id="@+id/sys"
+        android:layout_width="182dp"
+        android:layout_height="52dp"
+        android:layout_below="@+id/time"
+        android:layout_alignLeft="@+id/tv1"
+        android:layout_alignEnd="@+id/tv1"
+        android:layout_marginLeft="151dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="-184dp"
+        android:layout_marginRight="16dp"
+        android:hint="Systolic"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="20dp"></TextView>
+
+    <TextView
+        android:id="@+id/dia"
+        android:layout_width="182dp"
+        android:layout_height="52dp"
+        android:layout_below="@+id/sys"
+        android:layout_alignLeft="@+id/tv2"
+        android:layout_alignEnd="@+id/tv2"
+        android:layout_marginLeft="152dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-186dp"
+        android:layout_marginRight="16dp"
+        android:hint="Diastolic"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="20dp"></TextView>
 
 </RelativeLayout>
