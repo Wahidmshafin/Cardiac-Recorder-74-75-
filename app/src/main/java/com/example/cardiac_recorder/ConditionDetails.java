@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +28,7 @@ public class ConditionDetails extends AppCompatActivity {
     int position;
     String TAG = "Error";
     EditText date, time, sys_pr, dias_pr, hrt_rate, comment;
+    private Context context;
 
     public void init() {
         time = findViewById(R.id.sa_time);
@@ -95,6 +98,7 @@ public class ConditionDetails extends AppCompatActivity {
                         reference.child(key).setValue(measurement);
                         Intent newintent = new Intent(ConditionDetails.this, MainActivity.class);
                         startActivity(newintent);
+
                     }
                 }
             });

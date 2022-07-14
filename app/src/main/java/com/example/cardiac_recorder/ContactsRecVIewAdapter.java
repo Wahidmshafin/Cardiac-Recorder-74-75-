@@ -55,6 +55,8 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.time.setText(measurement.get(position).getTime());
         holder.date.setText(measurement.get(position).getDate());
+        holder.sys.setText(Integer.toString(measurement.get(position).getSystolicPressure()));
+        holder.dia.setText(Integer.toString(measurement.get(position).getDiastolicPressure()));
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,63 +66,7 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
 
                 intent.putExtra("info",measurement.get(holder.getAbsoluteAdapterPosition()));
                 context.startActivity(intent);
-                Log.e(TAG, "onClick: Miss korse");
                 Toast.makeText(context,"selected", Toast.LENGTH_SHORT).show();
-            }
-        });
-        holder.parent.setOnLongClickListener(new View.OnLongClickListener()
-        {
-            @Override
-            public boolean onLongClick(View view)
-            {
-                new AlertDialog.Builder(holder.parent.getContext())
-                        .setMessage("Are you sure you want to delete this file")
-                        .setTitle("Delete this?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i)
-                            {
-                               // measurement.remove(holder.getAbsoluteAdapterPosition());
-//                                int a=holder.getAbsoluteAdapterPosition();
-//                                String id =Integer.toString(a);
-                                DatabaseReference reference= FirebaseDatabase.getInstance().getReference("newest");
-                                      reference.addValueEventListener(new ValueEventListener() {
-                                          @Override
-                                          public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                              for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-//                                                  Measurement mthis = postSnapshot.getValue(Measurement.class);
-//                                                  if(measurement.get(holder.getAbsoluteAdapterPosition()).equals(mthis))
-//                                                  {
-//                                                      key=postSnapshot.getKey();
-//                                                      Log.e(TAG, "onDataChange: "+key );
-//                                                     measurement.remove(mthis);
-//                                                    reference.child(key).removeValue();
-//                                                      break;
-//                                                  }
-                                              }
-                                          }
-
-                                          @Override
-                                          public void onCancelled(@NonNull DatabaseError error) {
-
-                                          }
-                                      });
-                                Log.e(TAG, "onDatae: "+key );
-
-                                //notifyItemInserted(measurement.size());
-                               notifyDataSetChanged();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i)
-                            {
-                                dialogInterface.cancel();
-                            }
-                        }).show();
-                return true;
             }
         });
     }
@@ -140,12 +86,16 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
 
         private TextView time;
         private TextView date;
+        private TextView sys;
+        private TextView dia;
         private RelativeLayout parent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             time = itemView.findViewById(R.id.time);
             date = itemView.findViewById(R.id.date);
+            sys = itemView.findViewById(R.id.sys);
+            dia = itemView.findViewById(R.id.dia);
             parent = itemView.findViewById(R.id.parent);
         }
     }
