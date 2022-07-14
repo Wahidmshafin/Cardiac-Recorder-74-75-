@@ -5,6 +5,7 @@ import android.os.Parcelable;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
+import java.util.Objects;
 
 public class Measurement implements Serializable
 {
@@ -22,6 +23,20 @@ public class Measurement implements Serializable
         this.heartrate = heartrate;
         this.comment = comment;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Measurement that = (Measurement) o;
+        return systolicPressure == that.systolicPressure && diastolicPressure == that.diastolicPressure && heartrate == that.heartrate && date.equals(that.date) && time.equals(that.time) && Objects.equals(comment, that.comment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(date, time, systolicPressure, diastolicPressure, heartrate, comment);
+    }
+
     public Measurement()
     {
 

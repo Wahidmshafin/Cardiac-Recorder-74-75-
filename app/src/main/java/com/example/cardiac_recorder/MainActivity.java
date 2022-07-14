@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity
                 measurement.add(ms);
                 adapter.notifyItemInserted(measurement.size()-1);
                 adapter.notifyDataSetChanged();
-                databaseReference.child("measurement").child(String.valueOf(measurement.size()-1)).setValue(ms);
+                databaseReference.child("newest").push().setValue(ms);
             }
         }
     });
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         contactsrecview = findViewById(R.id.contactsrecview);
         databaseReference= FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("measurement").addValueEventListener(new ValueEventListener()
+        databaseReference.child("newest").addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
@@ -89,29 +89,30 @@ public class MainActivity extends AppCompatActivity
                 {
 
                     //measurement.add((Measurement) dataSnapshot.getValue());
-                    Map<String, Object> hs=(Map<String, Object>) dataSnapshot.getValue();
-
+                    //Map<String, Object> hs=(Map<String, Object>) dataSnapshot.getValue();
+                    Measurement ms=dataSnapshot.getValue(Measurement.class);
 //                    Log.e(TAG, "onDataChange: "+);
                     //Measurement ms=new Measurement(hs.get("date"),hs.get("time"));
-                   // measurement.add(ms);
-                    Object a= hs.get("date");
-                    //Measurement a = (Measurement) hs.get("date");
-                    String s1 = a.toString();
-                    Object b =hs.get("time");
-                    String s2 = b.toString();
-                    Object c = hs.get("systolicPressure");
-                    String cc = c.toString();
-                    int s3 = Integer.parseInt(cc);
-                    Object d =hs.get("diastolicPressure");
-                    String dd = d.toString();
-                    int s4 = Integer.parseInt(dd);
-                    Object e = hs.get("heartrate");
-                    String ee = e.toString();
-                    int s5 = Integer.parseInt(ee);
-                    Object f = hs.get("comment");
-                    String s6 = f.toString();
-                    measurement.add(new Measurement(s1,s2,s3,s4,s5,s6));
-                   adapter.notifyItemInserted(measurement.size()-1);
+                    // measurement.add(ms);
+//                    Object a= hs.get("date");
+//                    //Measurement a = (Measurement) hs.get("date");
+//                    String s1 = a.toString();
+//                    Object b =hs.get("time");
+//                    String s2 = b.toString();
+//                    Object c = hs.get("systolicPressure");
+//                    String cc = c.toString();
+//                    int s3 = Integer.parseInt(cc);
+//                    Object d =hs.get("diastolicPressure");
+//                    String dd = d.toString();
+//                    int s4 = Integer.parseInt(dd);
+//                    Object e = hs.get("heartrate");
+//                    String ee = e.toString();
+//                    int s5 = Integer.parseInt(ee);
+//                    Object f = hs.get("comment");
+//                    String s6 = f.toString();
+//                    measurement.add(new Measurement(s1,s2,s3,s4,s5,s6));
+                    measurement.add(ms);
+                    adapter.notifyItemInserted(measurement.size()-1);
                 }
                 adapter.notifyDataSetChanged();
             }
