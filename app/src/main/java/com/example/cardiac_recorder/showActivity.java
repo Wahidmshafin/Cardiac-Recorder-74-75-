@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 public class showActivity extends AppCompatActivity
 {
 
+
+
     EditText ea_time,ea_date, ea_systolic, ea_diastolic, ea_rate, ea_comment;
     //Button btn_add;
 
@@ -102,12 +104,14 @@ public class showActivity extends AppCompatActivity
     {
         super.onDestroy();
         Measurement measurement=new Measurement(ea_date.getText().toString(),ea_time.getText().toString(),
+                //update here
                 Integer.parseInt(ea_systolic.getText().toString()),Integer.parseInt(ea_diastolic.getText().toString())
                 ,Integer.parseInt(ea_rate.getText().toString()),ea_comment.getText().toString());
         Log.e(TAG, "onDestroy: Pressed");
-        intent.putExtra("info",measurement);
-        intent.putExtra("position",position);
-        setResult(Activity.RESULT_OK,intent);
+        Intent backintent=new Intent(showActivity.this,MainActivity.class);
+        backintent.putExtra("info",measurement);
+        backintent.putExtra("position",position);
+        startActivity(backintent);
         finish();
     }
 

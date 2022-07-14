@@ -15,7 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -23,17 +22,24 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIewAdapter.ViewHolder> {
     private ArrayList<Measurement> measurement = new ArrayList<>();
     private Context context;
     String TAG="Error";
-
+    String time;
     ActivityResultLauncher<Intent>content;
+    String key;
 
-    public ContactsRecVIewAdapter(Context context, ActivityResultLauncher<Intent> content) {
-        this.content=content;
+    public ContactsRecVIewAdapter(Context context) {
         this.context = context;
     }
 
@@ -52,13 +58,12 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent=new Intent(holder.parent.getContext(), showActivity.class);
+                Intent intent=new Intent(holder.parent.getContext(), ConditionDetails.class);
                 intent.putExtra("add", false);
                 intent.putExtra("position", holder.getAbsoluteAdapterPosition());
 
                 intent.putExtra("info",measurement.get(holder.getAbsoluteAdapterPosition()));
-                content.launch(intent);
+                context.startActivity(intent);
                 Log.e(TAG, "onClick: Miss korse");
                 Toast.makeText(context,"selected", Toast.LENGTH_SHORT).show();
             }
@@ -76,9 +81,35 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i)
                             {
-                                measurement.remove(holder.getAbsoluteAdapterPosition());
-                                notifyItemInserted(measurement.size());
-                                notifyDataSetChanged();
+                               // measurement.remove(holder.getAbsoluteAdapterPosition());
+//                                int a=holder.getAbsoluteAdapterPosition();
+//                                String id =Integer.toString(a);
+                                DatabaseReference reference= FirebaseDatabase.getInstance().getReference("newest");
+                                      reference.addValueEventListener(new ValueEventListener() {
+                                          @Override
+                                          public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                              for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+//                                                  Measurement mthis = postSnapshot.getValue(Measurement.class);
+//                                                  if(measurement.get(holder.getAbsoluteAdapterPosition()).equals(mthis))
+//                                                  {
+//                                                      key=postSnapshot.getKey();
+//                                                      Log.e(TAG, "onDataChange: "+key );
+//                                                     measurement.remove(mthis);
+//                                                    reference.child(key).removeValue();
+//                                                      break;
+//                                                  }
+                                              }
+                                          }
+
+                                          @Override
+                                          public void onCancelled(@NonNull DatabaseError error) {
+
+                                          }
+                                      });
+                                Log.e(TAG, "onDatae: "+key );
+
+                                //notifyItemInserted(measurement.size());
+                               notifyDataSetChanged();
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener()
