@@ -40,13 +40,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
 {
     TextView txt_test;
     ListView record_listView;
     ArrayList<Measurement> measurement = new ArrayList<>();
-
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     private RecyclerView contactsrecview;
     ActivityResultLauncher<Intent>getcontent=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>()
     {
@@ -61,6 +64,7 @@ public class MainActivity extends AppCompatActivity
                 measurement.add(ms);
                 adapter.notifyItemInserted(measurement.size()-1);
                 adapter.notifyDataSetChanged();
+                databaseReference.child("newest").push().setValue(ms);
             }
         }
     });
@@ -68,29 +72,23 @@ public class MainActivity extends AppCompatActivity
 
     ContactsRecVIewAdapter adapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         contactsrecview = findViewById(R.id.contactsrecview);
-        adapter= new ContactsRecVIewAdapter(this);
-        adapter.setMeasurement(measurement);
-
-        contactsrecview.setAdapter(adapter);
-        contactsrecview.setLayoutManager(new LinearLayoutManager(this));
-        FirebaseApp.initializeApp(this);
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("measurement");
-
-        reference.addValueEventListener(new ValueEventListener()
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("newest").addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
+                measurement.clear();
                 for(DataSnapshot dataSnapshot:snapshot.getChildren())
                 {
-                    measurement.add((Measurement) dataSnapshot.getValue());
+                    Measurement ms=dataSnapshot.getValue(Measurement.class);
+                    measurement.add(ms);
                     adapter.notifyItemInserted(measurement.size()-1);
                 }
                 adapter.notifyDataSetChanged();
@@ -102,16 +100,11 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-
-        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
-        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
-        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
-        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
-        measurement.add(new Measurement("1st July","9.56pm",80,137,92,"Healthy"));
-        measurement.add(new Measurement("2nd July","9.57pm",81,135,96,"Healthy"));
-        measurement.add(new Measurement("3rd July","9.58pm",82,134,93,"Healthy"));
-        measurement.add(new Measurement("4th July","9.59pm",83,134,99,"Needs Observation"));
-
+        adapter= new ContactsRecVIewAdapter(this);
+        adapter.setMeasurement(measurement);
+//
+        contactsrecview.setAdapter(adapter);
+        contactsrecview.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
@@ -130,12 +123,5 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra("add",true);
         getcontent.launch(intent);
         return true;
-    }
-
-    @Override
-    public void onBackPressed()
-    {
-        super.onBackPressed();
-        finishAffinity();
     }
 }
