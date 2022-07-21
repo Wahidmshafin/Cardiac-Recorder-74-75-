@@ -14,7 +14,6 @@ public class SplashScreen extends AppCompatActivity
     ProgressBar progressBar;
     Timer timer;
     int i=0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
