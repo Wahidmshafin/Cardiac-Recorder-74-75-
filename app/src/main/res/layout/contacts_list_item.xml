@@ -12,7 +12,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:hint="Time"
-        android:textAlignment="center"
+        android:gravity="center"
+
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20dp"></TextView>
 
@@ -25,7 +26,7 @@
         android:layout_marginEnd="-154dp"
         android:layout_marginRight="16dp"
         android:hint="Date"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20dp"></TextView>
 
@@ -38,7 +39,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginRight="16dp"
         android:text="Systolic Pressure:"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20dp"></TextView>
 
@@ -50,7 +51,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:text="Diastolic Pressure:"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20dp"></TextView>
 
@@ -66,7 +67,7 @@
         android:layout_marginEnd="-184dp"
         android:layout_marginRight="16dp"
         android:hint="Systolic"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20dp"></TextView>
 
@@ -82,7 +83,7 @@
         android:layout_marginEnd="-186dp"
         android:layout_marginRight="16dp"
         android:hint="Diastolic"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20dp"></TextView>
 
