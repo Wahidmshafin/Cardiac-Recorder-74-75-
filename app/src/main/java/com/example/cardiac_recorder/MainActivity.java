@@ -25,6 +25,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
@@ -42,9 +43,14 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity
 {
+
+
+
     TextView txt_test;
     ListView record_listView;
     ArrayList<Measurement> measurement = new ArrayList<>();
@@ -77,6 +83,8 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         contactsrecview = findViewById(R.id.contactsrecview);
         databaseReference= FirebaseDatabase.getInstance().getReference();
         databaseReference.child("newest").addValueEventListener(new ValueEventListener()
