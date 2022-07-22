@@ -4,10 +4,11 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
 
-public class Measurement implements Serializable
+public class Measurement implements Serializable, Comparable<Measurement>
 {
     private String date;
     private String time;
@@ -87,5 +88,11 @@ public class Measurement implements Serializable
 
     public String getComment() {
         return comment;
+    }
+
+    @Override
+    public int compareTo(Measurement o)
+    {
+        return this.time.compareTo(o.getTime());
     }
 }

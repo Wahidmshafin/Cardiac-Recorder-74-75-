@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         contactsrecview = findViewById(R.id.contactsrecview);
+        FirebaseApp.initializeApp(MainActivity.this);
         databaseReference= FirebaseDatabase.getInstance().getReference();
         databaseReference.child("newest").addValueEventListener(new ValueEventListener()
         {
