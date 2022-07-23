@@ -72,9 +72,9 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
             public void onClick(View v) {
                 Intent intent=new Intent(holder.parent.getContext(), ConditionDetails.class);
                 intent.putExtra("add", false);
-                intent.putExtra("position", holder.getAbsoluteAdapterPosition());
+                intent.putExtra("position", holder.getAdapterPosition());
 
-                intent.putExtra("info",measurement.get(holder.getAbsoluteAdapterPosition()));
+                intent.putExtra("info",measurement.get(holder.getAdapterPosition()));
                 context.startActivity(intent);
                 Toast.makeText(context,"selected", Toast.LENGTH_SHORT).show();
             }

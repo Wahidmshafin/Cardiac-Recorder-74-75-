@@ -99,7 +99,9 @@ public class MainActivity extends AppCompatActivity
 
 
         contactsrecview = findViewById(R.id.contactsrecview);
+
         databaseReference= FirebaseDatabase.getInstance().getReference();
+        
         databaseReference.child("newest").addValueEventListener(new ValueEventListener()
         {
             @Override
