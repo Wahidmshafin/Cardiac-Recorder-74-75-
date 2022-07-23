@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private RecyclerView contactsrecview;
+
     ActivityResultLauncher<Intent>getcontent=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>()
     {
         @Override
