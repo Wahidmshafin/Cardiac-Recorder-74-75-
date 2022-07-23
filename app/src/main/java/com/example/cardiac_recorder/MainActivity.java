@@ -42,6 +42,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -75,7 +76,19 @@ public class MainActivity extends AppCompatActivity
         }
     });
 
+    public List<Measurement>getMeasurement()
+    {
+        return measurement;
+    }
 
+    public void add(Measurement measure)
+    {
+        if(measurement.contains(measure))
+        {
+            throw new IllegalArgumentException();
+        }
+        measurement.add(measure);
+    }
     ContactsRecVIewAdapter adapter;
 
     @Override
@@ -113,6 +126,7 @@ public class MainActivity extends AppCompatActivity
 //
         contactsrecview.setAdapter(adapter);
         contactsrecview.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     @Override

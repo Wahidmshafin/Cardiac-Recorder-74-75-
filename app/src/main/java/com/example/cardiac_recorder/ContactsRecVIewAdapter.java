@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,6 +58,15 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
         holder.date.setText(measurement.get(position).getDate());
         holder.sys.setText(Integer.toString(measurement.get(position).getSystolicPressure()));
         holder.dia.setText(Integer.toString(measurement.get(position).getDiastolicPressure()));
+        if((measurement.get(position).getSystolicPressure()<90 || measurement.get(position).getDiastolicPressure()<60) ||(measurement.get(position).getSystolicPressure()>140 || measurement.get(position).getDiastolicPressure()>90) )
+        {
+            holder.time.setTextColor(Color.RED);
+            holder.date.setTextColor(Color.RED);
+            holder.sys.setTextColor(Color.RED);
+            holder.dia.setTextColor(Color.RED);
+            holder.diatext.setTextColor(Color.RED);
+            holder.systext.setTextColor(Color.RED);
+        }
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +98,8 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
         private TextView date;
         private TextView sys;
         private TextView dia;
+        private TextView diatext;
+        private TextView systext;
         private RelativeLayout parent;
 
         public ViewHolder(@NonNull View itemView) {
@@ -96,6 +108,8 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
             date = itemView.findViewById(R.id.date);
             sys = itemView.findViewById(R.id.sys);
             dia = itemView.findViewById(R.id.dia);
+            diatext=itemView.findViewById(R.id.tv2);
+            systext=itemView.findViewById(R.id.tv1);
             parent = itemView.findViewById(R.id.parent);
         }
     }
