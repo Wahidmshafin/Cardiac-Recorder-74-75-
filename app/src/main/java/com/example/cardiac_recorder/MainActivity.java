@@ -45,6 +45,10 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
 {
+
+    /**
+     * This is the HomeActivity where all the measure are shown
+     */
     TextView txt_test;
     ListView record_listView;
     ArrayList<Measurement> measurement = new ArrayList<>();
@@ -105,7 +109,6 @@ public class MainActivity extends AppCompatActivity
         });
         adapter= new ContactsRecVIewAdapter(this);
         adapter.setMeasurement(measurement);
-//
         contactsrecview.setAdapter(adapter);
         contactsrecview.setLayoutManager(new LinearLayoutManager(this));
     }

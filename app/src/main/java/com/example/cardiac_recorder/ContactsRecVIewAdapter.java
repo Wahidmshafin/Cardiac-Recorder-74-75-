@@ -31,6 +31,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+
+/**
+ * This is the RecycleView Adapter
+ */
 public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIewAdapter.ViewHolder> {
     private ArrayList<Measurement> measurement = new ArrayList<>();
     private Context context;
@@ -39,9 +43,24 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
     ActivityResultLauncher<Intent>content;
     String key;
 
+    /**
+     * Constructor which initialize the adapter
+     * @param context
+     * get context
+     */
     public ContactsRecVIewAdapter(Context context) {
         this.context = context;
     }
+
+    /**
+     * Creating the View
+     * @param parent
+     * Get ViewGroup
+     * @param viewType
+     * get ViewType
+     * @return
+     * return the View
+     */
 
     @NonNull
     @Override
@@ -51,6 +70,12 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
         return holder;
     }
 
+
+    /**
+     *
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.time.setText(measurement.get(position).getTime());
@@ -63,7 +88,6 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
                 Intent intent=new Intent(holder.parent.getContext(), ConditionDetails.class);
                 intent.putExtra("add", false);
                 intent.putExtra("position", holder.getAdapterPosition());
-
                 intent.putExtra("info",measurement.get(holder.getAdapterPosition()));
                 context.startActivity(intent);
                 Toast.makeText(context,"selected", Toast.LENGTH_SHORT).show();
@@ -71,11 +95,20 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
         });
     }
 
+    /**
+     * Get the number of list item
+     * @return
+     * return the number of item
+     */
     @Override
     public int getItemCount() {
         return measurement.size();
     }
 
+    /**
+     * For setting the 
+     * @param measurement
+     */
     public void setMeasurement(ArrayList<Measurement> measurement) {
         this.measurement = measurement;
 

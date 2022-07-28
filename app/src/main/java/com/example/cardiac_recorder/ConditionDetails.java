@@ -19,6 +19,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
+/**
+ * This activity show the details information
+ */
 public class ConditionDetails extends AppCompatActivity {
     Button button_delete, button_edit;
     private DatabaseReference reference;
@@ -30,6 +34,10 @@ public class ConditionDetails extends AppCompatActivity {
     EditText date, time, sys_pr, dias_pr, hrt_rate, comment;
     private Context context;
 
+
+    /**
+     * Initialize all the layout elements
+     */
     public void init() {
         time = findViewById(R.id.sa_time);
         date = findViewById(R.id.sa_date);
@@ -51,7 +59,6 @@ public class ConditionDetails extends AppCompatActivity {
         init();
         intent = getIntent();
         position = intent.getIntExtra("position", 0);
-        //position=0;
         boolean add = intent.getBooleanExtra("add", false);
         if (add) {
             button_edit.setText("ADD");
@@ -78,6 +85,10 @@ public class ConditionDetails extends AppCompatActivity {
             dias_pr.setText(Integer.toString(measurement.getDiastolicPressure()));
             hrt_rate.setText(Integer.toString(measurement.getHeartrate()));
             comment.setText(measurement.getComment());
+
+            /**
+             * Edit information or save the edited information.
+             */
             button_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -121,6 +132,10 @@ public class ConditionDetails extends AppCompatActivity {
 
                 }
             });
+
+            /**
+             * Perform delete operation
+             */
             button_delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
