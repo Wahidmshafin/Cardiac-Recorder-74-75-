@@ -1,7 +1,5 @@
 package com.example.cardiac_recorder;
 
-import android.icu.util.Measure;
-
 import java.util.ArrayList;
 import java.util.List;
 

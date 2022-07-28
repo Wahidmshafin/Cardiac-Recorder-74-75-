@@ -3,22 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-
-        <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_condition_details.xml" value="0.11302083333333333" />
-        <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_show.xml" value="0.2" />
-        <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_splash.xml" value="0.25" />
-        <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
-        <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/contacts_list_item.xml" value="0.1" />
-        <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/splashscreen.xml" value="0.25" />
-
         <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_condition_details.xml" value="0.2212962962962963" />
         <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_show.xml" value="0.2212962962962963" />
         <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/contacts_list_item.xml" value="0.2212962962962963" />
         <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/layout/splashscreen.xml" value="0.25" />
         <entry key="..\:/Cardiac-Recorder-74-75-/app/src/main/res/menu/addbutton_view.xml" value="0.2212962962962963" />
-
         <entry key="..\:/CardiacRecorder/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/CardiacRecorder/app/src/main/res/layout/record_list_view.xml" value="0.25" />
         <entry key="..\:/Users/Mahadi Ankon/Cardiac-Recorder-74-75-/app/src/main/res/layout/activity_main.xml" value="0.264" />
@@ -35,6 +25,10 @@
         <entry key="..\:/Users/Mahadi Ankon/Desktop/Cardiac-Recorder-74-75-/app/src/main/res/layout/splashscreen.xml" value="0.10416666666666667" />
       </map>
     </option>
+  </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/JavaDoc" />
+    <option name="OPTION_INCLUDE_LIBS" value="true" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

@@ -78,21 +78,13 @@ public class MainActivity extends AppCompatActivity
         }
     });
 
-    public List<Measurement>getMeasurement()
-    {
-        return measurement;
-    }
-
-    public void add(Measurement measure)
-    {
-        if(measurement.contains(measure))
-        {
-            throw new IllegalArgumentException();
-        }
-        measurement.add(measure);
-    }
     ContactsRecVIewAdapter adapter;
 
+    /**
+     * Creating and doing all the works on the MainActivity
+     * @param savedInstanceState
+     * pass the savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -132,6 +124,13 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /**
+     *Creating the option menu for add button
+     * @param menu
+     * passing the menu
+     * @return
+     * return if true or false
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -140,6 +139,13 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * Function done when selected on the menuitem
+     * @param item
+     * get the menu item
+     * @return
+     * return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {

@@ -54,7 +54,7 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
     }
 
     /**
-     * Creating the View
+     * Creating the holder which holds view
      * @param parent
      * Get ViewGroup
      * @param viewType
@@ -73,9 +73,11 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
 
 
     /**
-     *
+     *Binding the view with the information
      * @param holder
+     * pass the holder
      * @param position
+     * pass the position where to bind the view
      */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -118,6 +120,7 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
     /**
      * For setting the 
      * @param measurement
+     * Set the arrayList
      */
     public void setMeasurement(ArrayList<Measurement> measurement) {
         this.measurement = measurement;
@@ -125,6 +128,9 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
         notifyDataSetChanged();
     }
 
+    /**
+     * Create the ViewHolder which extends the RecycleView
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView time;

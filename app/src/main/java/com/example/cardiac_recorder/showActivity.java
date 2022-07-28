@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+
+/**
+ * Activity for Adding information
+ */
 public class showActivity extends AppCompatActivity
 {
 
@@ -22,6 +26,10 @@ public class showActivity extends AppCompatActivity
     Intent intent;
     int position;
     String TAG="Error";
+
+    /**
+     * Initialize layout elements
+     */
     public void init()
     {
         ea_time=findViewById(R.id.sa_time);
@@ -97,6 +105,9 @@ public class showActivity extends AppCompatActivity
 
     }
 
+    /**
+     * operations done before destroying the activity
+     */
     @Override
     protected void onDestroy()
     {
