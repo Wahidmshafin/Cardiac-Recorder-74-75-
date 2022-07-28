@@ -1,4 +1,4 @@
-name: Android CI
+name: Android UI
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -24,11 +24,9 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-      
-      # Execute unit tests
-    - name: Unit Test
-      run: ./gradlew testDebugUnitTest
+    - name: Android Emulator Runner
+      uses: ReactiveCircus/android-emulator-runner@v2.25.0
+      with:
+          api-level: 31
+          script: ./gradlew connectedCheck
 
-    - name: Android Test Report
-      uses: asadmansr/android-test-report-action@v1.2.0
-      if: ${{ always() }} # IMPORTANT: run Android Test Report regardless
