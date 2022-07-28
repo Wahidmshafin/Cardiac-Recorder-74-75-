@@ -22,15 +22,14 @@ The app should allow the user to:
 *****UI DESIGN:*****
 
 1. Splash Screen:
-<br><br><br><img src="https://user-images.githubusercontent.com/102902991/177008533-3847f8a2-4c44-4b3b-b037-69087556859e.png" width="400">
+<br><br><br><img src="https://user-images.githubusercontent.com/102902991/181458301-71d0a59d-2673-4327-9db5-6b03d5840652.png" width="400">
+
 
 2. Measurement Record List: 
-<br><br><br><img src="https://user-images.githubusercontent.com/102902991/177008651-b9da2942-c8e7-4cc1-8b9b-7bde755cf6cf.png" width="400">
-
+<br><br><br><img src="https://user-images.githubusercontent.com/102902991/181458934-561b4256-e81e-48b8-bb16-e2f91b87d1e4.png" width="400">
 
 3. Add Record:
-<br><br><br><img src="https://user-images.githubusercontent.com/102902991/177008664-2641db4a-a3e3-4c59-8e14-fc60eaa86a79.png" width="400">
+<br><br><br><img src="https://user-images.githubusercontent.com/102902991/181459574-7e98e173-0019-404e-9e6e-b31f535fe62f.png" width="400">
 
-
-4. Update Record:
-<br><br><br><img src="https://user-images.githubusercontent.com/102902991/177008635-9332403c-da41-4623-89aa-c43680f1d941.png" width="400">
+4. Update and Delete Record:
+<br><br><br><img src="https://user-images.githubusercontent.com/102902991/181459889-d2afd120-e76f-4ab0-a3ce-96a06deb7216.png" width="400">
