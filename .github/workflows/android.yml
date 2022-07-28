@@ -27,7 +27,7 @@ jobs:
       
       # Execute unit tests
     - name: Unit Test
-      run: ./gradlew MeasurementListTest
+      run: ./gradlew/app/src/test/java/com/example/cardiac_recorder/MeasurementListTest
 
     - name: Android Test Report
       uses: asadmansr/android-test-report-action@v1.2.0
