@@ -38,8 +38,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="6dp"
         android:layout_marginRight="16dp"
-        android:text="Systolic Pressure:"
         android:gravity="center"
+        android:text="Systolic Pressure:"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20dp"></TextView>
 
@@ -50,8 +50,8 @@
         android:layout_below="@+id/tv1"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:text="Diastolic Pressure:"
         android:gravity="center"
+        android:text="Diastolic Pressure:"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20dp"></TextView>
 
@@ -66,8 +66,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="-184dp"
         android:layout_marginRight="16dp"
-        android:hint="Systolic"
         android:gravity="center"
+        android:hint="Systolic"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20dp"></TextView>
 

@@ -25,6 +25,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
@@ -41,14 +42,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity
 {
-
     /**
      * This is the HomeActivity where all the measure are shown
      */
+
     TextView txt_test;
     ListView record_listView;
     ArrayList<Measurement> measurement = new ArrayList<>();
@@ -74,7 +78,19 @@ public class MainActivity extends AppCompatActivity
         }
     });
 
+    public List<Measurement>getMeasurement()
+    {
+        return measurement;
+    }
 
+    public void add(Measurement measure)
+    {
+        if(measurement.contains(measure))
+        {
+            throw new IllegalArgumentException();
+        }
+        measurement.add(measure);
+    }
     ContactsRecVIewAdapter adapter;
 
     @Override
@@ -82,6 +98,8 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         contactsrecview = findViewById(R.id.contactsrecview);
 
         databaseReference= FirebaseDatabase.getInstance().getReference();
@@ -111,6 +129,7 @@ public class MainActivity extends AppCompatActivity
         adapter.setMeasurement(measurement);
         contactsrecview.setAdapter(adapter);
         contactsrecview.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     @Override
