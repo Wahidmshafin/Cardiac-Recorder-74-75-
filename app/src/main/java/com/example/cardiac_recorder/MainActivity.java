@@ -80,11 +80,6 @@ public class MainActivity extends AppCompatActivity
 
     ContactsRecVIewAdapter adapter;
 
-    /**
-     * Creating and doing all the works on the MainActivity
-     * @param savedInstanceState
-     * pass the savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

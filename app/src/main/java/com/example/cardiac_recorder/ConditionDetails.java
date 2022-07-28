@@ -10,8 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,9 +33,7 @@ public class ConditionDetails extends AppCompatActivity {
     private Context context;
 
 
-    /**
-     * Initialize all the layout elements
-     */
+
     public void init() {
         time = findViewById(R.id.sa_time);
         date = findViewById(R.id.sa_date);
@@ -86,9 +82,6 @@ public class ConditionDetails extends AppCompatActivity {
             hrt_rate.setText(Integer.toString(measurement.getHeartrate()));
             comment.setText(measurement.getComment());
 
-            /**
-             * Edit information or save the edited information.
-             */
             button_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -133,9 +126,6 @@ public class ConditionDetails extends AppCompatActivity {
                 }
             });
 
-            /**
-             * Perform delete operation
-             */
             button_delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

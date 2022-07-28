@@ -1,7 +1,5 @@
 package com.example.cardiac_recorder;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Comparator;
@@ -150,6 +148,7 @@ public class Measurement implements Serializable, Comparable<Measurement>
      * Get systolicPressure
      * @return
      * return systolicPressure
+     *
      */
     public int getSystolicPressure() {
         return systolicPressure;
@@ -185,9 +184,11 @@ public class Measurement implements Serializable, Comparable<Measurement>
 
 
     /**
-     *
+     *Return compare to
      * @param o
+     * parameter
      * @return
+     * return output
      */
     @Override
     public int compareTo(Measurement o)

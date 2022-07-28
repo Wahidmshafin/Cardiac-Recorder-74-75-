@@ -53,16 +53,6 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
         this.context = context;
     }
 
-    /**
-     * Creating the holder which holds view
-     * @param parent
-     * Get ViewGroup
-     * @param viewType
-     * get ViewType
-     * @return
-     * return the View
-     */
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -72,13 +62,6 @@ public class ContactsRecVIewAdapter extends RecyclerView.Adapter<ContactsRecVIew
     }
 
 
-    /**
-     *Binding the view with the information
-     * @param holder
-     * pass the holder
-     * @param position
-     * pass the position where to bind the view
-     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.time.setText(measurement.get(position).getTime());
